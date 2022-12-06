@@ -143,7 +143,7 @@ write.csv(data, file = "wadasLabel.csv")
 **Lexicon**
 ```{r}
 library(e1071) #library yang terdapat sebuah algoritma naivebayes
-library(caret) #library yang terdapat sebuah algoritma naivebayes
+library(caret) #mengetahui apakah metode naive bayes baik untuk data kita atau tidak
 library(syuzhet) #library yang terdapat sebuah algoritma naivebayes
 
 #digunakan untuk membaca file csv yang sudah di cleaning data
@@ -253,7 +253,7 @@ tweets_words <-  data1 %>%
 
 words <- tweets_words %>% dplyr::count(word, sort=TRUE)
 
-p <- wordcloud2(data=df, size=2, color='random-dark')
+p <- wordcloud2(data=df, size=1, color='random-dark')
 p
 ```
 
@@ -264,6 +264,7 @@ corpus = Corpus(VectorSource(data1$text))
 corpus <- tm_map(corpus, removeWords,"yang")
 corpus <- tm_map(corpus, removeWords,"oleh")
 corpus <- tm_map(corpus, removeWords,"tih")
+corpus <- tm_map(corpus, removeWords,"rambutnya")
 
 dtm <- TermDocumentMatrix(corpus)
 m <- as.matrix(dtm)
